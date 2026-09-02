@@ -1,4 +1,14 @@
 [
-  { "coords": "3.4521067651690243, -76.53591254767677", "nombre": "Primera cita en Cali" },
-  { "coords": "10.968, -74.781", "nombre": "Carnaval en Barranquilla" }
+  {
+    "coords": "3.4521067651690243, -76.53591254767677",
+    "nombre": "Primera cita en Cali",
+    "fecha": "2024-02-14",
+    "descripcion": "Cena romántica en San Antonio con vista a la ciudad."
+  },
+  {
+    "coords": "10.968, -74.781",
+    "nombre": "Carnaval en Barranquilla",
+    "fecha": "2025-02-22",
+    "descripcion": "Disfrutamos el desfile de la Batalla de Flores."
+  }
 ]
