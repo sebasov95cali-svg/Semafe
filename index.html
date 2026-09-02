@@ -46,7 +46,8 @@
     ]).then(([geoData, depData]) => {
       L.geoJSON(geoData, {
         style: function(feature) {
-          if (depData.destacados.includes(feature.properties.DPTO_CNMBR)) {
+          // Cambiado a NOMBRE_DPT
+          if (depData.destacados.includes(feature.properties.NOMBRE_DPT)) {
             return {
               color: "red",
               weight: 2,
@@ -62,7 +63,7 @@
           };
         },
         onEachFeature: function(feature, layer) {
-          layer.bindPopup("Departamento: " + feature.properties.DPTO_CNMBR);
+          layer.bindPopup("Departamento: " + feature.properties.NOMBRE_DPT);
         }
       }).addTo(map);
     }).catch(err => console.error("Error cargando departamentos:", err));
