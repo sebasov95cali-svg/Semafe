@@ -46,7 +46,7 @@
     // Leer departamentos desde colombia.geo.json y Departamentos.json
     Promise.all([
       fetch("colombia.geo.json").then(res => res.json()),
-      fetch("Departamentos.json").then(res => res.json())
+      fetch("departamentos.json").then(res => res.json())
     ]).then(([geoData, depData]) => {
       L.geoJSON(geoData, {
         style: function(feature) {
