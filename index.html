@@ -37,20 +37,19 @@
             <b>${p.nombre}</b><br>
             ${p.descripcion ? p.descripcion + "<br>" : ""}
             ${p.fecha ? "📅 " + p.fecha : ""}
-            ;
+          `;
           L.marker([lat, lng]).addTo(map).bindPopup(contenido);
         });
-      });      
+      })
       .catch(err => console.error("Error cargando puntos.json:", err));
 
     // Leer departamentos desde colombia.geo.json y Departamentos.json
     Promise.all([
       fetch("colombia.geo.json").then(res => res.json()),
-      fetch("departamentos.json").then(res => res.json())
+      fetch("Departamentos.json").then(res => res.json())
     ]).then(([geoData, depData]) => {
       L.geoJSON(geoData, {
         style: function(feature) {
-          // Usar NOMBRE_DPT y aplicar relleno
           const nombre = feature.properties.NOMBRE_DPT;
           if (depData.destacados.includes(nombre)) {
             return {
