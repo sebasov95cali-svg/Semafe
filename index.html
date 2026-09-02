@@ -46,13 +46,14 @@
     ]).then(([geoData, depData]) => {
       L.geoJSON(geoData, {
         style: function(feature) {
-          // Cambiado a NOMBRE_DPT
-          if (depData.destacados.includes(feature.properties.NOMBRE_DPT)) {
+          // Usar NOMBRE_DPT y aplicar relleno
+          const nombre = feature.properties.NOMBRE_DPT;
+          if (depData.destacados.includes(nombre)) {
             return {
-              color: "red",
-              weight: 2,
-              fillColor: "red",
-              fillOpacity: 0.5
+              color: "red",          // borde rojo
+              weight: 2,             // grosor del borde
+              fillColor: "red",      // relleno rojo
+              fillOpacity: 0.5       // transparencia del relleno (50%)
             };
           }
           return {
