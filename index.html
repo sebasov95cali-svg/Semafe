@@ -38,6 +38,34 @@
         });
       })
       .catch(err => console.error("Error cargando puntos.json:", err));
+
+    // Leer departamentos desde colombia.geo.json y Departamentos.json
+    Promise.all([
+      fetch("colombia.geo.json").then(res => res.json()),
+      fetch("Departamentos.json").then(res => res.json())
+    ]).then(([geoData, depData]) => {
+      L.geoJSON(geoData, {
+        style: function(feature) {
+          if (depData.destacados.includes(feature.properties.DPTO_CNMBR)) {
+            return {
+              color: "red",
+              weight: 2,
+              fillColor: "red",
+              fillOpacity: 0.5
+            };
+          }
+          return {
+            color: "gray",
+            weight: 1,
+            fillColor: "lightgray",
+            fillOpacity: 0.1
+          };
+        },
+        onEachFeature: function(feature, layer) {
+          layer.bindPopup("Departamento: " + feature.properties.DPTO_CNMBR);
+        }
+      }).addTo(map);
+    }).catch(err => console.error("Error cargando departamentos:", err));
   </script>
 </body>
 </html>
