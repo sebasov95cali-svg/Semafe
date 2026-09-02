@@ -10,15 +10,10 @@
 
   <style>
     body { margin:0; padding:0; }
-    #map { height: 90vh; width: 100%; }
-    #controls { padding: 10px; text-align: center; }
-    button { padding: 8px 12px; margin: 5px; cursor: pointer; }
+    #map { height: 100vh; width: 100%; }
   </style>
 </head>
 <body>
-  <div id="controls">
-    <button onclick="nuevoPunto()">➕ Nuevo punto (solo prueba)</button>
-  </div>
   <div id="map"></div>
 
   <!-- Leaflet JS -->
@@ -43,20 +38,6 @@
         });
       })
       .catch(err => console.error("Error cargando puntos.json:", err));
-
-    // Botón para probar un nuevo punto (no guarda en el JSON)
-    function nuevoPunto() {
-      const coords = prompt("Ingresa coordenadas (lat, lng):");
-      const nombre = prompt("Ingresa nombre o etiqueta:");
-      if (!coords || !nombre) return;
-
-      // Solo dibuja en el mapa y muestra en consola
-      console.log("Nuevo punto (manual):", { coords, nombre });
-
-      const [lat, lng] = coords.split(",").map(Number);
-      L.marker([lat, lng]).addTo(map)
-        .bindPopup("📍 " + nombre).openPopup();
-    }
   </script>
 </body>
 </html>
