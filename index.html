@@ -33,10 +33,14 @@
       .then(puntos => {
         puntos.forEach(p => {
           const [lat, lng] = p.coords.split(",").map(Number);
-          L.marker([lat, lng]).addTo(map)
-            .bindPopup("📍 " + p.nombre);
+          const contenido = `
+            <b>${p.nombre}</b><br>
+            ${p.descripcion ? p.descripcion + "<br>" : ""}
+            ${p.fecha ? "📅 " + p.fecha : ""}
+            ;
+          L.marker([lat, lng]).addTo(map).bindPopup(contenido);
         });
-      })
+      });      
       .catch(err => console.error("Error cargando puntos.json:", err));
 
     // Leer departamentos desde colombia.geo.json y Departamentos.json
